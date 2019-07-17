@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
   title = 'connect-four';
+  boardGroup: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) {
+    this.boardGroup = this.formBuilder.group({
+      rows: [undefined, [Validators.required, Validators.min(4)]],
+      columns: [undefined, [Validators.required, Validators.min(4)]]
+    });
+  }
+
+  createBoard() {
+
+  }
 }
