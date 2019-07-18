@@ -1,0 +1,35 @@
+<div class="board-container">
+  <app-button
+    class="margin-bottom"
+    (click)="initializeBoard()">
+    Clear Board
+  </app-button>
+  <div class="margin-bottom">
+    Active player: {{player}}
+  </div>
+  <div class="margin-bottom">
+    Counter: {{counter}}
+  </div>
+  <div class="circles-container">
+    <div
+      *ngFor="let column of boardGame; index as columnIndex"
+      class="board-column">
+    <span
+      class="column-title"
+      (click)="addTile({columnIndex: columnIndex, rowIndex: 0})">
+      Click to add
+    </span>
+      <div
+        *ngFor="let row of column; index as rowIndex"
+        class="column-row">
+        <app-circle
+          [highlight]="boardGame[columnIndex][rowIndex].highlight"
+          [rowIndex]="rowIndex"
+          [player]="boardGame[columnIndex][rowIndex].player"
+          [columnIndex]="columnIndex"
+          (clicked)="addTile($event)">
+        </app-circle>
+      </div>
+    </div>
+  </div>
+</div>

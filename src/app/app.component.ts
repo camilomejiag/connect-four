@@ -9,6 +9,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class AppComponent {
 
   title = 'connect-four';
+  boardCreated = false;
   boardGroup: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
@@ -19,6 +20,8 @@ export class AppComponent {
   }
 
   createBoard() {
-
+    if (this.boardGroup.valid) {
+      this.boardCreated = true;
+    }
   }
 }

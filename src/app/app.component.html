@@ -7,27 +7,32 @@
     Please add the amount of rows and columns you want the board to be:
   </h2>
   <form (ngSubmit)="createBoard()" [formGroup]="boardGroup">
-    <div>
+    <div class="row">
       <app-input
+        class="col-xs-6"
         [label]="'Rows'"
         [control]="boardGroup.get('rows')">
       </app-input>
-    </div>
-    <div>
       <app-input
+        class="col-xs-6"
         [label]="'Columns'"
         [control]="boardGroup.get('columns')">
       </app-input>
     </div>
     <div>
-      <button
+      <app-button
         [disabled]="boardGroup.invalid"
         type="submit">
         Create Board
-      </button>
+      </app-button>
     </div>
-    <div class="game-container">
-      <app-board></app-board>
+    <div
+      *ngIf="boardCreated"
+      class="game-container">
+      <app-board
+        [rows]="boardGroup.get('rows').value"
+        [columns]="boardGroup.get('columns').value">
+      </app-board>
     </div>
   </form>
 </div>

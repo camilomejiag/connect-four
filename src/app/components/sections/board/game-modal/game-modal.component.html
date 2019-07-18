@@ -1,0 +1,5 @@
+<h2 *ngIf="data.completed">Game Completed!</h2>
+<h2 *ngIf="!data.completed"> Congratulations Player {{data.player}}</h2>
+<div mat-dialog-actions>
+  <button mat-button (click)="onClick()">Restart</button>
+</div>

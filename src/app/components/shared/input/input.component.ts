@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {FormControl} from '@angular/forms';
+import {MatFormFieldAppearance} from '@angular/material';
 
 @Component({
   selector: 'app-input',
@@ -10,6 +11,7 @@ export class InputComponent {
 
   @Input() control: FormControl;
   @Input() label: string;
+  appearance: MatFormFieldAppearance = 'legacy';
 
   constructor() {
   }
