@@ -12,6 +12,7 @@ export class BoardComponent implements OnInit {
 
   @Input() rows: number;
   @Input() columns: number;
+  @Input() validForm: boolean;
   player: number;
   counter: number;
   boardGame: any;
@@ -50,16 +51,18 @@ export class BoardComponent implements OnInit {
   }
 
   initializeBoard() {
-    this.counter = 0;
-    this.player = 1;
-    this.boardGame = new Array(Number(this.columns));
-    for (let i = 0; i < this.columns; i++) {
-      this.boardGame[i] = new Array(Number(this.rows));
-      for (let j = 0; j < this.boardGame[i].length; j++) {
-        this.boardGame[i][j] = {
-          highlight: false,
-          player: null
-        };
+    if (this.validForm) {
+      this.counter = 0;
+      this.player = 1;
+      this.boardGame = new Array(Number(this.columns));
+      for (let i = 0; i < this.columns; i++) {
+        this.boardGame[i] = new Array(Number(this.rows));
+        for (let j = 0; j < this.boardGame[i].length; j++) {
+          this.boardGame[i][j] = {
+            highlight: false,
+            player: null
+          };
+        }
       }
     }
   }

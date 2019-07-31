@@ -1,14 +1,20 @@
 <div class="board-container">
   <app-button
+    [disabled]="!validForm"
     class="margin-bottom"
     (click)="initializeBoard()">
-    Clear Board
+    Clear/Restart Board
   </app-button>
-  <div class="margin-bottom">
-    Active player: {{player}}
-  </div>
-  <div class="margin-bottom">
-    Counter: {{counter}}
+  <div class="active-player margin-bottom">
+    Active player:
+    <span
+      class="player"
+      [ngClass]="{
+            'player-1': player === 1,
+            'player-2': player === 2
+            }">
+      {{player}}
+    </span>
   </div>
   <div class="circles-container">
     <div
@@ -16,6 +22,10 @@
       class="board-column">
     <span
       class="column-title"
+      [ngClass]="{
+            'player-1': player === 1,
+            'player-2': player === 2
+            }"
       (click)="addTile({columnIndex: columnIndex, rowIndex: 0})">
       Click to add
     </span>

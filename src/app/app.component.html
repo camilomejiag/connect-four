@@ -4,22 +4,17 @@
     Welcome to {{ title }}!
   </h1>
   <h2>
-    Please add the amount of rows and columns you want the board to be:
+    Please enter board size:
   </h2>
   <form (ngSubmit)="createBoard()" [formGroup]="boardGroup">
     <div class="row">
       <app-input
-        class="col-xs-6"
-        [label]="'Rows'"
-        [control]="boardGroup.get('rows')">
-      </app-input>
-      <app-input
-        class="col-xs-6"
-        [label]="'Columns'"
-        [control]="boardGroup.get('columns')">
+        class="col-xs-offset-3 col-xs-6"
+        [label]="'Size'"
+        [control]="boardGroup.get('size')">
       </app-input>
     </div>
-    <div>
+    <div *ngIf="!boardCreated">
       <app-button
         [disabled]="boardGroup.invalid"
         type="submit">
@@ -30,8 +25,9 @@
       *ngIf="boardCreated"
       class="game-container">
       <app-board
-        [rows]="boardGroup.get('rows').value"
-        [columns]="boardGroup.get('columns').value">
+        [validForm]="boardGroup.valid"
+        [rows]="boardGroup.get('size').value"
+        [columns]="boardGroup.get('size').value">
       </app-board>
     </div>
   </form>

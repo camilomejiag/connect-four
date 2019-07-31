@@ -8,14 +8,13 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class AppComponent {
 
-  title = 'connect-four';
+  title = 'Connect Four';
   boardCreated = false;
   boardGroup: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
     this.boardGroup = this.formBuilder.group({
-      rows: [undefined, [Validators.required, Validators.min(4)]],
-      columns: [undefined, [Validators.required, Validators.min(4)]]
+      size: [undefined, [Validators.required, Validators.min(4)]]
     });
   }
 
